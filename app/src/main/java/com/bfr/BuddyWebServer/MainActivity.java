@@ -39,6 +39,7 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
     private WebhookServer server;
     private Handler mainHandler;
     private Robot robot;
+    private RobotBehaviour robotAi;
 
 
     @Override
@@ -53,7 +54,6 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
         to_say = findViewById(R.id.editTextToSay);
 
         robot = new Robot();
-
 
         mainHandler = new Handler(Looper.getMainLooper());
     }
@@ -70,10 +70,10 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
             log("webhook " + route + " " +  data);
             switch (route) {
                 case "/speak" :
-                        robot.speak(data);
+                    robot.speak(data);
                     break;
                 case "/face" :
-                        onFaceReceived(data);
+                    onFaceReceived(data);
                     break;
                 case "/head_pitch" :
                     robot.setHeadPitch(parseInt(data, 0));
@@ -83,6 +83,18 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
                     break;
                 case "/head_pitchyaw" :
                     onHeadPitchYawReceived(data);
+                    break;
+                case "/forward" :
+                    robot.move(parseInt(data, 0), -1);
+                    break;
+                case "/backward" :
+                    robot.move(parseInt(data, 0), 1);
+                    break;
+                case "/rotate" :
+                    robot.rotate(parseInt(data, 0));
+                    break;
+                case "/stop" :
+                    robot.stopMove();
                     break;
                 default:
                     log("unknown command : " + route + " " + data);
@@ -156,8 +168,11 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
     @Override
     //This function is called when the SDK is ready
     public void onSDKReady() {
+        Log.i(TAG, "Buddy SDK ready");
         createServer();
         robot.onSdkReady();
+        robotAi = new RobotBehaviour(robot);
+        robotAi.init();
     }
 
     // Catches SPEAKING event.

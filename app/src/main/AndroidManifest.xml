@@ -12,6 +12,9 @@
     <uses-permission android:name="com.bfr.buddy.resource.GUI" />
     <uses-permission android:name="com.bfr.buddy.resource.HEAD" />
     <uses-permission android:name="com.bfr.buddy.resource.LEDS" />
+    <uses-permission android:name="com.bfr.buddy.resource.LEDS" />
+    <uses-permission android:name="com.bfr.buddy.resource.SENSOR_MODULE" />
+    <uses-permission android:name="com.bfr.buddy.resource.WHEELS" />
 
     <application
         android:allowBackup="true"
