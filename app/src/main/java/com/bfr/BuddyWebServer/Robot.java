@@ -138,44 +138,14 @@ public class Robot {
     }
 
     public void move(float distance, float sens) {
-        BuddySDK.USB.moveBuddy(default_move_speed * sens, distance * 0.01f, new IUsbCommadRsp.Stub() {
-            @Override
-            public void onSuccess(String s) throws RemoteException {
-                Log.i(TAG, "Move: success");//in case of success show in the logcat window 'success'
-            }
-
-            @Override
-            public void onFailed(String s) throws RemoteException {//in case of failure to achieve this function
-                Log.i(TAG, "Move: fail : " + s);//show in the logcat window a message
-            }
-        });
+        BuddySDK.USB.moveBuddy(default_move_speed * sens, distance * 0.01f, defaultCallback);
     }
     public void rotate(float angle) {
-        BuddySDK.USB.rotateBuddy(default_rotate_speed, angle, new IUsbCommadRsp.Stub() {
-
-            @Override
-            public void onSuccess(String s) throws RemoteException {//in case of success we want an answer
-            }
-
-            @Override
-            public void onFailed(String s) throws RemoteException {
-                Log.i(TAG, "Rotation notWorking : "+s);//will show the error in the logcat
-            }
-        });
+        BuddySDK.USB.rotateBuddy(default_rotate_speed, angle, defaultCallback);
 
     }
     public void stopMove() {
-        BuddySDK.USB.emergencyStopMotors(new IUsbCommadRsp.Stub() {
-            @Override
-            public void onSuccess(String s) throws RemoteException {//in case of success we want an answer
-
-            }
-
-            @Override
-            public void onFailed(String s) throws RemoteException {//in case of failure we want to have the information
-                Log.i(TAG, "StopMotors notWorking : "+s);
-            }
-        });
+        BuddySDK.USB.emergencyStopMotors(defaultCallback);
     }
 
     private void EnableNoMotor(int state){

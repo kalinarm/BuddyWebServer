@@ -14,11 +14,12 @@
         android:id="@+id/number"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="592dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="564dp"
+        android:layout_marginTop="12dp"
         android:hint="enter pitch value"
         android:inputType="number"
         android:text="100"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,10 +30,10 @@
         android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/stopServer"
@@ -41,20 +42,21 @@
         android:text="Stop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextToSay"
         android:layout_width="437dp"
         android:layout_height="50dp"
-        android:layout_marginStart="304dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Bonjour, je suis un robot qui parle"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Bonjour, je suis un robot qui parle" />

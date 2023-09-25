@@ -1,4 +1,7 @@
-package com.bfr.BuddyWebServer;import android.os.Bundle;
+package com.bfr.BuddyWebServer;
+
+import android.media.MediaPlayer;
+import android.os.Bundle;
 
 
 import android.os.Handler;
@@ -36,6 +39,8 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
     EditText to_say;
     Button setFR, setENG;
 
+    MediaPlayer mediaPlayer;
+
     private WebhookServer server;
     private Handler mainHandler;
     private Robot robot;
@@ -53,6 +58,9 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
         volume_text= findViewById(R.id.number);
         to_say = findViewById(R.id.editTextToSay);
 
+        //init the sound
+        //mediaPlayer = MediaPlayer.create(this, R.raw.squidgame);
+
         robot = new Robot();
 
         mainHandler = new Handler(Looper.getMainLooper());
@@ -60,6 +68,8 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
 
     @Override
     protected void onDestroy() {
+        //mediaPlayer.release();
+
         super.onDestroy();
         stopServer();
     }
@@ -93,6 +103,9 @@ public class MainActivity extends BuddyActivity implements WebhookCallback {
                 case "/rotate" :
                     robot.rotate(parseInt(data, 0));
                     break;
+                case "/squid":
+                    //mediaPlayer.start();
+                    robot.rotate(180);
                 case "/stop" :
                     robot.stopMove();
                     break;
